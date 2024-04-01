@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="4" author="andrei">
+        <createTable tableName="programs">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="usernames" type="TEXT[]">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="andrei">
+        <sql>
+            ALTER TABLE programs
+                ADD CONSTRAINT programs_link_program_id_fkey FOREIGN KEY (parent_id) REFERENCES programs (id);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

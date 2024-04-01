@@ -1,0 +1,30 @@
+services:
+  postgres-programs:
+    image: postgis/postgis:latest
+    ports:
+      - "5432:5432"
+    container_name: programs
+    environment:
+      - POSTGRES_DB=programs
+      - POSTGRES_USER=programs
+      - POSTGRES_PASSWORD=programs
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres-users:
+    image: postgis/postgis:latest
+    ports:
+      - "5433:5432"
+    container_name: users
+    environment:
+      - POSTGRES_DB=users
+      - POSTGRES_USER=users
+      - POSTGRES_PASSWORD=users
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5

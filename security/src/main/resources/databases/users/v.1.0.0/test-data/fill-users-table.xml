@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="4" author="andrei">
+        <comment>Inserting test-data in users table</comment>
+        <sql>
+            INSERT INTO users (name, surname, birth_date, username, password, program_ids)
+            VALUES ('Мин', 'Экономики', '1980-01-01', 'mineconom',
+                    '$2a$10$YHOZUTPJr.W9tJ1mtlyOouoGVSTs2uCbofrZCNALzKqfk7EvMzptq', '{1, 4}'),
+                   ('Отв', 'Заказчик', '1990-02-02', 'otvzakaz',
+                    '$2a$10$YHOZUTPJr.W9tJ1mtlyOouoGVSTs2uCbofrZCNALzKqfk7EvMzptq', '{1}'),
+                   ('Отв', 'Заказчик', '2000-03-03', 'otvzakaz2',
+                    '$2a$10$YHOZUTPJr.W9tJ1mtlyOouoGVSTs2uCbofrZCNALzKqfk7EvMzptq', '{2}'),
+                   ('Заказчик', 'Подпрограммы', '2000-03-03', 'zakazpp',
+                    '$2a$10$YHOZUTPJr.W9tJ1mtlyOouoGVSTs2uCbofrZCNALzKqfk7EvMzptq', '{2}'),
+                   ('Заказчик', 'Подпрограммы', '2000-03-03', 'zakazpp2',
+                    '$2a$10$YHOZUTPJr.W9tJ1mtlyOouoGVSTs2uCbofrZCNALzKqfk7EvMzptq', '{2, 3}')
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

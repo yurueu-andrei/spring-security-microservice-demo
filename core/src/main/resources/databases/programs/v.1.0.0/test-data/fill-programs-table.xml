@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1" author="andrei">
+        <sql>
+            INSERT INTO programs (name, usernames, parent_id)
+            VALUES ('Управление государственными финансами и регулирование финансового рынка',
+                    '{"mineconom", "otvzakaz"}', null),
+                   ('Обеспечение устойчивости бюджетной системы и повышение эффективности управления государственными финансами',
+                    '{"otvzakaz2", "zakazpp", "zakazpp2"}', 1),
+                   ('Управление государственным долгом, долгом органов местного управления и самоуправления',
+                    '{"zakazpp2"}', 1),
+
+                   ('Государственная программа инновационного развития Республики Беларусь на 2021 – 2025 годы',
+                    '{"mineconom"}', null)
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
