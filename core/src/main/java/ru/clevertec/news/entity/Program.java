@@ -1,6 +1,7 @@
 package ru.clevertec.news.entity;
 
 import io.hypersistence.utils.hibernate.type.array.StringArrayType;
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.Type;
 
 @Data
@@ -36,6 +38,10 @@ public class Program {
     @Column(name = "usernames", columnDefinition = "TEXT[]")
     @Type(StringArrayType.class)
     private String[] usernames;
+
+    @Formula("id || name")
+    @Basic(fetch=FetchType.LAZY)
+    private String idName;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
